@@ -1,1 +1,18 @@
-<p>json-edit works!</p>
+<div nz-row class="config">
+  <nz-form-item class="centered">
+    <nz-form-label nzFor="size">Number of documents</nz-form-label>
+    <nz-form-control>
+      <nz-input-number id="size" [nzMin]="1" [nzMax]="10000" [nzStep]="1" [(ngModel)]="docSizeRequested" (ngModelChange)="changeDocSizeRequested($event)"></nz-input-number>
+    </nz-form-control>
+  </nz-form-item>
+</div>
+
+<div nz-row class="flex-all-width">
+  <div class="flex-all-height" nz-col nzMd="12" nzSm="24">
+    <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="queryCode"></ngx-monaco-editor>
+  </div>
+  <div class="flex-all-height" nz-col nzMd="12" nzSm="24">
+    <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="resultCode"></ngx-monaco-editor>
+  </div>
+</div>
+<app-help-window></app-help-window>

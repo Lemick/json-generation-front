@@ -4,7 +4,7 @@ import {JsonEditComponent} from './pages/json-edit/json-edit.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/json-edit' },
-  { path: 'json-edit', component: JsonEditComponent }
+  { path: '**', component: JsonEditComponent }
 ];
 
 @NgModule({

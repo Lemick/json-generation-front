@@ -1,0 +1,21 @@
+<nz-drawer [nzClosable]="true" [nzVisible]="helpMenuVisible"
+           nzPlacement="right" nzTitle="Basic Drawer" (nzOnClose)="close()"
+           nzWidth="40%">
+  <div nz-row>
+    <nz-card [nzBordered]="true" [nzTitle]="randIntTitle">
+      <ng-template #randIntTitle>
+        <code>randInt(min,max)</code>
+      </ng-template>
+      <p>Produces a random integer value</p>
+    </nz-card>
+  </div>
+  <div nz-row>
+    <nz-card [nzTitle]="enumTitle">
+      <ng-template #enumTitle>
+        <code>enum(value1,value2,value3,...)</code>
+      </ng-template>
+      <p>Produces a random integer value</p>
+    </nz-card>
+  </div>
+</nz-drawer>
+

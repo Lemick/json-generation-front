@@ -1,0 +1,27 @@
+.flex-all-width {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.flex-all-height, .flex-all-height * {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+:host {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.config {
+  height: 60px;
+}
+
+.centered {
+  margin: auto;
+}
