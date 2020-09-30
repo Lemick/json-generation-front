@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HelpWindowService} from '../../help-window.service';
+import {HelpWindowService} from '../../services/help-window.service';
 
 @Component({
   selector: 'app-help-window',

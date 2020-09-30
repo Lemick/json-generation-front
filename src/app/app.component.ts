@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import {HelpWindowService} from './help-window.service';
+import {Component} from '@angular/core';
+import {HelpWindowService} from './services/help-window.service';
+import {GenerationApiService} from './services/generation-api.service';
+import {JsonService} from './services/json.service';
 
 @Component({
   selector: 'app-root',
@@ -8,18 +10,17 @@ import {HelpWindowService} from './help-window.service';
 })
 export class AppComponent {
 
-  constructor(private helpWindowService: HelpWindowService) {
+  constructor(private helpWindowService: HelpWindowService,
+              private generationApiService: GenerationApiService,
+              private jsonResultService: JsonService)
+  {
   }
 
   openHelpWindow() {
     this.helpWindowService.showHelpRequest();
   }
 
-  log(clientHeight: number) {
-    console.log(clientHeight);
-  }
-
   generateJson() {
-
+    this.jsonResultService.requestGeneration();
   }
 }

@@ -1,9 +1,8 @@
-import {Component, OnInit, Output, ViewChild} from '@angular/core';
-import {JsonEditorComponent, JsonEditorOptions} from 'ang-jsoneditor';
-import {DiffEditorModel, EditorComponent, MonacoEditorModule, NgxEditorModel} from 'ngx-monaco-editor';
-import {HelpWindowService} from '../../help-window.service';
-import {EventEmitter} from 'events';
-import {SizeRequestService} from '../../size-request.service';
+import {Component, OnInit} from '@angular/core';
+import {JsonService} from '../../services/json.service';
+import {catchError, switchMap, takeUntil, tap} from 'rxjs/operators';
+import {GenerationApiService} from '../../services/generation-api.service';
+import {EMPTY, empty, of} from 'rxjs';
 
 @Component({
   selector: 'app-json-edit',
@@ -18,18 +17,40 @@ export class JsonEditComponent implements OnInit {
     automaticLayout: true
   };
 
-  queryCode = ' { \n "test": "test2" \n }';
+  queryCode = '';
   resultCode = '';
-  docSizeRequested: number;
+  docSizeRequested = 5;
 
-  constructor(private sizeRequestedService: SizeRequestService) {
-    sizeRequestedService.docSizeRequested$.subscribe(value => this.docSizeRequested = value);
+  constructor(private jsonService: JsonService,
+              private generationApiService: GenerationApiService) {
+
+    jsonService.jsonGenerationRequested$.pipe(
+      switchMap(() =>
+        this.generationApiService.generateJson(this.docSizeRequested, this.queryCode).pipe(
+          catchError(() => EMPTY)
+        ))
+    ).subscribe(
+      generatedJson => this.resultCode = this.jsonStringify(generatedJson)
+    );
   }
 
   ngOnInit() {
+    this.queryCode = this.jsonStringify({
+      id: '{{randInt()}}',
+      firstName: '{{randFirstName()}}',
+      lastName: '{{randLastName()}}',
+      email: '{{randEmail()}}',
+      phone: '{{randPhone()}}',
+      age: '{{randInt(0, 99)}}',
+      genre: '{{randEnum(male, female, other)}}',
+      generatedDate: '{{now()}}',
+      isVip: '{{randBool()}}',
+      orderDate: '{{randDate(2019-01-01T00:00:00Z, 2019-12-30T23:59:59Z)}}',
+    });
   }
 
-  changeDocSizeRequested($event: any) {
-    this.sizeRequestedService.changeDocSizeRequested($event);
+  jsonStringify(json: object): string {
+    return JSON.stringify(json, null, 4);
   }
+
 }
