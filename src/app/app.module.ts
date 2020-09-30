@@ -1,30 +1,32 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { IconsProviderModule } from './icons-provider.module';
+import {AppComponent} from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {IconsProviderModule} from './icons-provider.module';
 import {
-  NgZorroAntdModule,
-  NZ_I18N,
   fr_FR,
+  NZ_I18N,
   NzButtonModule,
-  NzLayoutModule,
-  NzMenuModule,
+  NzCardModule,
+  NzDrawerModule,
+  NzFormModule,
+  NzGridModule,
   NzIconModule,
   NzInputModule,
-  NzGridModule, NzDrawerModule, NzCardModule, NzInputNumberModule, NzFormModule
+  NzInputNumberModule,
+  NzLayoutModule,
+  NzMenuModule
 } from 'ng-zorro-antd';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { registerLocaleData } from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {registerLocaleData} from '@angular/common';
 import fr from '@angular/common/locales/fr';
-import { JsonEditComponent } from './pages/json-edit/json-edit.component';
-import { NgJsonEditorModule } from 'ang-jsoneditor';
-import {HIGHLIGHT_OPTIONS, HighlightModule} from 'ngx-highlightjs';
-import {MonacoEditorModule, NgxMonacoEditorConfig} from 'ngx-monaco-editor';
-import { HelpWindowComponent } from './pages/help-window/help-window.component';
+import {JsonEditComponent} from './pages/json-edit/json-edit.component';
+import {MonacoEditorModule} from 'ngx-monaco-editor';
+import {HelpWindowComponent} from './pages/help-window/help-window.component';
+import {AboutComponent} from './pages/about/about.component';
 
 registerLocaleData(fr);
 
@@ -33,7 +35,8 @@ registerLocaleData(fr);
   declarations: [
     AppComponent,
     JsonEditComponent,
-    HelpWindowComponent
+    HelpWindowComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,6 @@ registerLocaleData(fr);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgJsonEditorModule,
     NzLayoutModule,
     NzMenuModule,
     NzIconModule,

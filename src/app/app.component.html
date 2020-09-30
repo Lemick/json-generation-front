@@ -2,11 +2,14 @@
   <nz-header>
     <div>
       <ul nz-menu nzTheme="dark" nzMode="horizontal">
-        <li nz-menu-item [nzSelected]="false" (click)="openHelpWindow()">
+        <li nz-menu-item [nzSelected]="false"  (click)="openHelpWindow()">
           <i nz-icon [nzType]="'question-circle'"></i> Help
         </li>
-        <li nz-menu-item (click)="generateJson()">
+        <li nz-menu-item routerLink="json-edit">
           <i nz-icon [nzType]="'export'"></i> Generate JSON
+        </li>
+        <li nz-menu-item routerLink="about">
+          <i nz-icon [nzType]="'about'"></i> About
         </li>
       </ul>
     </div>

@@ -20,6 +20,7 @@ export class JsonEditComponent implements OnInit {
   queryCode = '';
   resultCode = '';
   docSizeRequested = 5;
+  isLoading: boolean;
 
   constructor(private jsonService: JsonService,
               private generationApiService: GenerationApiService) {
@@ -46,6 +47,7 @@ export class JsonEditComponent implements OnInit {
       generatedDate: '{{now()}}',
       isVip: '{{randBool()}}',
       orderDate: '{{randDate(2019-01-01T00:00:00Z, 2019-12-30T23:59:59Z)}}',
+      customEmail: '{{randFirstName()}}.{{randLastName()}}@gmail.com'
     });
   }
 
@@ -53,4 +55,14 @@ export class JsonEditComponent implements OnInit {
     return JSON.stringify(json, null, 4);
   }
 
+  launchGeneration() {
+    this.isLoading = true;
+    this.generationApiService.generateJson(this.docSizeRequested, this.queryCode).subscribe(
+      generatedJson => {
+        this.resultCode = this.jsonStringify(generatedJson);
+        this.isLoading = false;
+      },
+      () => this.isLoading = false
+    );
+  }
 }

@@ -1,20 +1,76 @@
 <nz-drawer [nzClosable]="true" [nzVisible]="helpMenuVisible"
-           nzPlacement="right" nzTitle="Basic Drawer" (nzOnClose)="close()"
-           nzWidth="40%">
+           nzPlacement="right" nzTitle="Need Help ?" (nzOnClose)="close()"
+           nzWidth="30%">
   <div nz-row>
     <nz-card [nzBordered]="true" [nzTitle]="randIntTitle">
       <ng-template #randIntTitle>
         <code>randInt(min,max)</code>
       </ng-template>
-      <p>Produces a random integer value</p>
+      <p>Produce a random integer value</p>
     </nz-card>
   </div>
   <div nz-row>
     <nz-card [nzTitle]="enumTitle">
       <ng-template #enumTitle>
-        <code>enum(value1,value2,value3,...)</code>
+        <code>enum(value1, value2, value3, args...)</code>
       </ng-template>
-      <p>Produces a random integer value</p>
+      <p>Choose a random text value between the arguments</p>
+    </nz-card>
+  </div>
+  <div nz-row>
+    <nz-card [nzTitle]="firstNameTitle">
+      <ng-template #firstNameTitle>
+        <code>randFirstName()</code>
+      </ng-template>
+      <p>Generate a random common first name</p>
+    </nz-card>
+  </div>
+  <div nz-row>
+    <nz-card [nzTitle]="lastNameTitle">
+      <ng-template #lastNameTitle>
+        <code>randLastName()</code>
+      </ng-template>
+      <p>Generate a random common last name</p>
+    </nz-card>
+  </div>
+  <div nz-row>
+    <nz-card [nzTitle]="emailTitle">
+      <ng-template #emailTitle>
+        <code>randEmail()</code>
+      </ng-template>
+      <p>Generate a random email (the domain is also selected randomly)</p>
+    </nz-card>
+  </div>
+  <div nz-row>
+    <nz-card [nzTitle]="phoneTitle">
+      <ng-template #phoneTitle>
+        <code>randPhone()</code>
+      </ng-template>
+      <p>Generate a random phone number in the international format</p>
+    </nz-card>
+  </div>
+  <div nz-row>
+    <nz-card [nzTitle]="boolTitle">
+      <ng-template #boolTitle>
+        <code>randBool()</code>
+      </ng-template>
+      <p>Produce a random boolean value</p>
+    </nz-card>
+  </div>
+  <div nz-row>
+    <nz-card [nzTitle]="dateTitle">
+      <ng-template #dateTitle>
+        <code>randDate(from, to)</code>
+      </ng-template>
+      <p>Produce a random date between a range of date in the ISO format (ex: 2019-01-01T00:00:00Z)</p>
+    </nz-card>
+  </div>
+  <div nz-row>
+    <nz-card [nzTitle]="nowTitle">
+      <ng-template #nowTitle>
+        <code>now()</code>
+      </ng-template>
+      <p>Get the current date</p>
     </nz-card>
   </div>
 </nz-drawer>

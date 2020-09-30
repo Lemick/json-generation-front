@@ -3,6 +3,9 @@
     <nz-form-label nzFor="size">Number of documents</nz-form-label>
     <nz-form-control>
       <nz-input-number id="size" [nzMin]="1" [nzMax]="10000" [nzStep]="1" [(ngModel)]="docSizeRequested"></nz-input-number>
+      <button nz-button style="margin-left: 10px" nzType="primary" [nzLoading]="isLoading" (click)="launchGeneration()">
+        <i nz-icon nzType="download"></i>Generate JSON
+      </button>
     </nz-form-control>
   </nz-form-item>
 </div>
