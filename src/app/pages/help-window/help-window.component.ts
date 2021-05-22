@@ -19,6 +19,7 @@ export class HelpWindowComponent implements OnInit {
   }
 
   close() {
+    this.helpWindowService.closeHelpRequest();
     this.helpMenuVisible = false;
   }
 }

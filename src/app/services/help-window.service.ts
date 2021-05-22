@@ -16,4 +16,8 @@ export class HelpWindowService {
     this.openingRequest.next(true);
   }
 
+  closeHelpRequest() {
+    this.openingRequest.next(false);
+  }
+
 }

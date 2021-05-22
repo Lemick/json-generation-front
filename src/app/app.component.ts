@@ -10,17 +10,15 @@ import {JsonService} from './services/json.service';
 })
 export class AppComponent {
 
+  hasFocusOnHelp = false;
+
   constructor(private helpWindowService: HelpWindowService,
               private generationApiService: GenerationApiService,
-              private jsonResultService: JsonService)
-  {
+              private jsonResultService: JsonService) {
+    helpWindowService.openingRequest$.subscribe(value => this.hasFocusOnHelp = value);
   }
 
   openHelpWindow() {
     this.helpWindowService.showHelpRequest();
-  }
-
-  generateJson() {
-    this.jsonResultService.requestGeneration();
   }
 }

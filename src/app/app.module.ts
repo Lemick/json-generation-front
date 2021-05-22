@@ -26,7 +26,6 @@ import fr from '@angular/common/locales/fr';
 import {JsonEditComponent} from './pages/json-edit/json-edit.component';
 import {MonacoEditorModule} from 'ngx-monaco-editor';
 import {HelpWindowComponent} from './pages/help-window/help-window.component';
-import {AboutComponent} from './pages/about/about.component';
 
 registerLocaleData(fr);
 
@@ -35,8 +34,7 @@ registerLocaleData(fr);
   declarations: [
     AppComponent,
     JsonEditComponent,
-    HelpWindowComponent,
-    AboutComponent
+    HelpWindowComponent
   ],
   imports: [
     BrowserModule,
